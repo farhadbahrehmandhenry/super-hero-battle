@@ -1,38 +1,35 @@
-# create-svelte
+## What is Sveltekit
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+- a fullstack framework to make websites
 
-## Creating a project
+  - svelte => frontend (like react)
+  - sveltekit => frontend and backend (routing, combine serverSide and clientSide rendering, make custome api, ...)
 
-If you're seeing this, you've probably already done this step. Congrats!
+- serverSide and clientSide rendering =>
+  - How react, vue, svelte, works =>
+    - makes single page application with blank html page
+    - in the browser (client) content gets rendered
+  - How sveltekit works
+    - makes both serverSide and clientSide rendering possible
+    - it doesn't send the initial blank html, but pre-rendered page from server
+    - and when user interacts with it it doesn't send requests to server but instead
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+## some basic details
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+- svelte files
+  - .svelte
+- content
+  - script
+  - html that will render on the page
+  - style
+- routing
+  - static (name of folders inside route)
+  - dynamic (singlePlayer, multiPlayer)
+  - (news)
+- dynamic value
+  - pass props - (playOption)
+- layout (for pages that have fixed and repatitive elements)
+  - about and about/more
+- syntax (/syntax)
+  - for loop
+  - if

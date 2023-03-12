@@ -1,4 +1,8 @@
 {
 	"/": [],
+	"/about": [],
+	"/about/more": [],
+	"/(site)/news": [],
+	"/(site)/syntax": [],
 	"/[playOption]": []
 }

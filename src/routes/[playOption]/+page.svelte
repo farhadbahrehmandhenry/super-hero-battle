@@ -1,33 +1,33 @@
 <script>
-  import {page} from '$app/stores';
+  // @ts-nocheck
+
+  import { page } from '$app/stores';
   import { onMount } from 'svelte';
-  import Header from "../../Components/Header/Header.svelte";
+  import Header from '../../Components/Header/Header.svelte';
   import Playground from '../../Components/Playground/Playground.svelte';
 
-  const {playOption} = $page.params;
+  const { playOption } = $page.params;
 
   let characters;
 
-  onMount(async() => {
-    const response = await fetch('https://akabab.github.io/superhero-api/api/all.json');
+  onMount(async () => {
+    const response = await fetch(
+      'https://akabab.github.io/superhero-api/api/all.json'
+    );
     characters = await response.json();
   });
-
-  console.log(characters)
-
 </script>
 
 <div class="play-container">
   <button class="back-btn"><a href="/">Back</a></button>
-  <Header size='3rem'></Header>
+  <Header size="3rem" />
   {#if playOption === 'multiPlayer'}
     <h3>Development in progress</h3>
-    {:else if characters === undefined}
-      <h3>Loading...</h3>
-    {:else}
-      <Playground playOption={playOption} characters={characters}></Playground>
+  {:else if characters === undefined}
+    <h3>Loading...</h3>
+  {:else}
+    <Playground {playOption} {characters} />
   {/if}
-  
 </div>
 
 <style>
@@ -69,5 +69,4 @@
   a:hover {
     color: white;
   }
-
 </style>

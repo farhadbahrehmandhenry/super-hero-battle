@@ -1,24 +1,33 @@
 <script>
-  import PlayerCart from "../PlayerCart/PlayerCart.svelte";
+  // @ts-nocheck
+
+  import PlayerCart from '../PlayerCart/PlayerCart.svelte';
 
   export let playOption = 'singlePlayer';
   export let characters;
   let isFetching = false;
   let superHero, ComputerSuperHero;
-  let superHeroResult = 0; 
+  let superHeroResult = 0;
   let computerResult = 0;
   let winner;
 
-  const scales = {combat: 3, durability:2, intelligence:2, power:4, speed:3, strength:5};
+  const scales = {
+    combat: 3,
+    durability: 2,
+    intelligence: 2,
+    power: 4,
+    speed: 3,
+    strength: 5,
+  };
 
   const handleFetchSuperHero = () => {
     isFetching = true;
     superHero = undefined;
     ComputerSuperHero = undefined;
     winner = undefined;
-    superHeroResult = 0; 
+    superHeroResult = 0;
     computerResult = 0;
-    
+
     setTimeout(() => {
       // TODO handle multiplayer
       const randomNumberOne = Math.floor(Math.random() * characters.length) + 1;
@@ -34,39 +43,41 @@
 
       if (superHeroResult > computerResult) {
         winner = 'superHero';
-      }
-      else if (superHeroResult < computerResult) {
+      } else if (superHeroResult < computerResult) {
         winner = 'computer';
-      }
-      else {
+      } else {
         winner = 'draw';
       }
 
       isFetching = false;
     }, 3000);
-  }
-
+  };
 </script>
 
 <div class="playgorund-container">
-  <button class="fetch-btn" on:click={handleFetchSuperHero} disabled={isFetching}>Fetch your super hero</button>
+  <button
+    class="fetch-btn"
+    on:click={handleFetchSuperHero}
+    disabled={isFetching}>Fetch your super hero</button
+  >
   <div class="players-container">
-    <PlayerCart 
-      player='PLAYER ONE' 
-      isFetching={isFetching} 
-      hero={superHero} 
-      winner={winner==='superHero'}
+    <PlayerCart
+      player="PLAYER ONE"
+      {isFetching}
+      hero={superHero}
+      winner={winner === 'superHero'}
       score={superHeroResult}
     />
-    <PlayerCart 
-      player={playOption === 'multiPlayer' ? 'PLAYER TWO' : 'COMPUTER'} 
-      isFetching={isFetching} 
+    <PlayerCart
+      player={playOption === 'multiPlayer' ? 'PLAYER TWO' : 'COMPUTER'}
+      {isFetching}
       hero={ComputerSuperHero}
-      winner={winner==='computer'}
+      winner={winner === 'computer'}
       score={computerResult}
     />
   </div>
 </div>
+
 <style>
   .playgorund-container {
     display: flex;
